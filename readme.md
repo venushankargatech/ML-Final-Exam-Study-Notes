@@ -21,16 +21,33 @@ the user with valuable information concerning their dataset/problem
       3. Unless we have K clusters GOTO 2
     * Links points closest to each other.
     * Can result in "stringy" non-compact clusters
+    * Terminates faster than KM and EM
+    * It is deterministic
+    * Complexity of O(n3)
+    
   * K-Means
     * Each iteration is polynomial
     * Finite (exponential) iterations in theory, but usually much less in practice
-    * Always converges, but can get stuck with "weird" clusters depending on random
-      starting state
-      1. Place k centers
-      2. Claim closest points
+    * ALWAYS converges, but can get stuck with "weird" clusters depending on random starting state
+      1. Place k centers randomly
+      2. Each center claim closest points
       3. find the centers of the points
       4. Move the centers to the clusters of points
       5. Unless converged GOTO 2
+    * center may not be a point on the cluster
+    * Produces more compact clusters
+    
+  * K-Means as optimization
+    * Confiugrations or inputs can be scored and we need configurations with high score
+    * Score is the sum of all the squared distance between a point and its cluster 
+    * Why does it converges
+      1. Finite number of configurations, objects and labels
+      2. Center is constrained
+
+  * Soft Clustering
+    * Allow for points to be shared across clusters
+    * Find hypothesis that maximises the probability of data.
+    
   * Expectation Maximization
     * Gaussian Means
     * Uses expectation and maximization steps
