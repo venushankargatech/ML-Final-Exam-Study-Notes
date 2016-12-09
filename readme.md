@@ -26,39 +26,47 @@ the user with valuable information concerning their dataset/problem
     * Complexity of O(n3)
     
   * K-Means
-    * Each iteration is polynomial
-    * Finite (exponential) iterations in theory, but usually much less in practice
-    * ALWAYS converges, but can get stuck with "weird" clusters depending on random starting state
+    * Each iteration is polynomial O(kn)
+    * Finite (exponential) iterations in theory, but usually much less in practice O(k^n)
+    * Error decreases if we break ties consistently hence it ALWAYS converges
+    * Can get stuck with "weird" clusters depending on random starting state
       1. Place k centers randomly
       2. Each center claim closest points
       3. find the centers of the points
       4. Move the centers to the clusters of points
       5. Unless converged GOTO 2
-    * center may not be a point on the cluster
+    * Center may not be a point on the cluster
     * Produces more compact clusters
     
   * K-Means as optimization
     * Confiugrations or inputs can be scored and we need configurations with high score
     * Score is the sum of all the squared distance between a point and its cluster 
     * Why does it converges
-      1. Finite number of configurations, objects and labels
-      2. Center is constrained
+      1. Finite number of configurations, objects and labels and hence center is constrained
+      2. Break ties consistenly
+      3. Never go into configuration of higher error
 
   * Soft Clustering
     * Allow for points to be shared across clusters
     * Find hypothesis that maximises the probability of data.
+      1. Select one of k Gaussians
+      2. Sample X from that Gaussian
+      3. Repeat n times
+    * Maximum likelihood mean of Gaussian is the mean of the data
     
   * Expectation Maximization
     * Gaussian Means
     * Uses expectation and maximization steps
     * Monotonically non-decreasing likelihood
-    * Does not converge (practically does)
+    * Does not converge (practically does) because of probability
     * Can get stuck
     * Works with any distribution (not just Gaussian)
+    
   * Properties of Clustering Algorithms (Pick 2)
     * Richness
     * Scale Invariance
     * Consistency
+    
   * Richness
     * For any assignment of objects to clusters, there is some distance matrix, D,
       such that P_D returns that clustering
