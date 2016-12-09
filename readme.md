@@ -77,44 +77,48 @@ the user with valuable information concerning their dataset/problem
       not change the clustering.
   * **No clustering scheme can acheive all of Richness, Scale-Invariance, Consistency**
 
-* Feature Selection
+* Feature Selection - Taking features and creating a new subset of features.
+  * Why is it required ?
+    * To tackle curse of dimensionality
+    * Interoperatibility and insight
+    
   * Filtering
-    * Choose features independent of learner. i.e. "filter" the data before it
-      is passed to the learner
+    * Choose features independent of learner. i.e. "filter" the data before it is passed to the learner
     * Faster than wrapping (don't have to pay the cost of the learner)
     * Tends to ignore relationships between features
     * Decision Trees do this naturally (Filter on information gain)
+    * Does not takes advantage of the bias of the learner
+    * Uses domain knowledge
   * Wrapping
-    * "Wrap" the learner into the feature selection.  Choose features based on
-      how the learner performs.
+    * "Wrap" the learner into the feature selection.  Choose features based on how the learner performs.
     * Takes into account learner bias
-    * Good at determining feature relationships (as they pertain to the success
-      of the learner)
+    * Good at determining feature relationships (as they pertain to the success of the learner)
     * Very slow (have to run the learner for each feature search)
     * Speed Ups
       * Randomized optimization
-      * Forward/Backward sequential selection: [good description and
-        implementation](http://sebastianraschka.com/Articles/2014_sequential_sel_algos.html)
+      * Forward/Backward sequential selection
+        * Forward search - I keep on adding features and stop when the stops improving
+        * Backward search - Start with all features and remove features when they don't improve the score
   * Relevance
-    * ![x_i](http://mathurl.com/2az2c7m.png) is strongly relevant if removing it degrades the Bayes' Optimal
-      Classifier
-    * ![x_i](http://mathurl.com/2az2c7m.png) is weakly relevant if
+    * x_i is strongly relevant if removing it degrades the Bayes' Optimal Classifier
+    * x_i is weakly relevant if
       * it is not strongly relevant
-      * ![There exists](http://mathurl.com/yhy6gla.png) a subset of features **S** such that adding             ![x_i](http://mathurl.com/2az2c7m.png) to **S** improves Bayes' Optimal Classifier
-      * ![x_i](http://mathurl.com/2az2c7m.png)  is otherwise irrelevant
+      * There exists a subset of features **S** such that adding x_i to **S** improves BOC
+    * x_i is otherwise irrelevant
+      
   * Relevance vs. Usefulness
-    * **Relevance** measures the effect the variable has on the Bayes' Optimal
-      Classifier
+    * **Relevance** measures the effect the variable has on the BOC
     * **Usefulness** measures the effect the variable has on the _error_ of a
       _particular predictor_ (ANN, DT, etc.)
 
-* Feature Transformation
+* Feature Transformation - Problem of pre-processing a set of features to create a new feature set,while retaining as much information as possible
   * Polsemy: Same word different meaning - False Positives
   * Synonomy: Different word same meaning - False Negatives
-  * PCA: [Good Slides](http://www.cc.gatech.edu/~agray/4245fall10/lecture18.pdf)
+  * PCA (Principal Components Analysis)
     * Example of an eigenproblem
     * Finds direction (eigenvectors) of **maximum variance**
     * All principal components (eigenvectors) are mutually orthogonal
+    * Best reconstruction
     * Reconstructing data from the principal components is proven to have the
       least possible L2 (squared) error compared to any other reduction
     * Eigenvalues are monotonically non-increasing and are proportional to
@@ -123,7 +127,8 @@ the user with valuable information concerning their dataset/problem
       is irrelevant**
     * Finds **"globally"** varying features (image brightness, saturation, etc.)
     * Fast algorithms available
-  * ICA
+    * Ordered bag of features
+  * ICA (Independent Components Analysis)
     * Finds new features that are completely **independent** (from each other).
       i.e. they share no mutual information
     * Attempts to maximize the mutual information between the **original**
@@ -131,7 +136,9 @@ the user with valuable information concerning their dataset/problem
       fairly easily from the transformed data.
     * Blind Source Separation (Cocktail Party Problem)
     * Finds **"locally"** varying features (image edges, facial features)
-  * RCA
+    * Bag of features
+    * Directional
+  * RCA (Random Components Analysis)
     * Generates random directions
     * It works! If you want to use it to preprocess classification data...
         * Is able to capture correlations between data, but in order for this to
@@ -139,14 +146,16 @@ the user with valuable information concerning their dataset/problem
           with PCA or ICA.
     * Can't really reconstruct the original data well.
     * Biggest advantage is speed.
-  * LDA
+  * LDA (Linear discriminant Analysis)
     * Requires data labels
     * Finds projections that discriminate based on the labels. i.e. separates
       data based on class.
 
 * Information Theory
+  * Mathematical framework to compare density vectors
   * Entropy: [A characterization of uncertainty about a source of    information](http://en.wikipedia.org/wiki/Entropy_(information_theory))
     * ![Entropy Formula](http://mathurl.com/pdmz66k.png)
+    * Minimum number of questions to be asked for retrieving the information
   * Joint Entropy: [The entropy contained by the combination of two variables](http://en.wikipedia.org/wiki/Joint_entropy)
     * ![Joint Entropy Formula](http://mathurl.com/l3t2ekl.png)
   * Conditional Entropy: [The entropy of one variable, given another](http://en.wikipedia.org/wiki/Conditional_entropy)
