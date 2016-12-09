@@ -288,3 +288,32 @@ some rewards and penalties and hopefully he will learn.
     * Policies _cannot_ be computed independently
     * Update _not_ efficient
     * Q functions _not_ sufficient to specify policy
+ * **Outro**
+   * Neural Nets/Deep Neural Nets
+     * Techniques for getting signal through multiple layers
+   * Semi Supervised Learning
+     * Elements of both supervised and unsupervised learning
+     * Class of supervised learning tasks and techniques that also make use of unlabeled data for training
+     * Uses a small amount of labeled data with a large amount of unlabeled data
+   * Assumption of Balanced labels
+     * Half is labeled negative and half is labeled positive but practically not the case
+     * Example is Cascade learner
+     * Iteratively reduce the dataset so that you can remove the data for which you are absolutely sure.
+     * As we reduce the dataset, we can increase the computational effort
+     * The final cascase learner cant be applied on the original dataset as distribution is different
+   * TF-IDF (Unsupervised learning)
+     * Term frequency - Inverse document frequency
+     * Used for applying NN in textual data
+     * TF - Amount of weight that you put on the appearence of a term in a document is proportional to term frequency
+     * IDF - If the term occurs every then you downgrade the relevance
+   * Spectral Learning
+     * Does not gets stuck in local optima
+   * Cross Entropy
+     * Like MIMIC
+   * POMDP
+     * Inomplete state information,
+   * Inverse Reinforcement Learning
+     * Start from observation and guess what the rewards
+     
+     
+  
