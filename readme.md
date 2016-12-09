@@ -288,7 +288,7 @@ some rewards and penalties and hopefully he will learn.
     * Policies _cannot_ be computed independently
     * Update _not_ efficient
     * Q functions _not_ sufficient to specify policy
- * **Outro**
+* **Outro**
    * Neural Nets/Deep Neural Nets
      * Techniques for getting signal through multiple layers
    * Semi Supervised Learning
