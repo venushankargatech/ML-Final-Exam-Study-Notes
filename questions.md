@@ -39,3 +39,30 @@ learner has prior knowledge of how its actions affect its environment.
 * L2 loss is more robust to outliers than L1 loss.
   * False. The gradient of L2 loss can grow without bound whereas the L1 loss gradient is bounded, hence the influence of an outlier is limited.
 
+* Why is feature selection required
+  * To deal with curse of dimensionality 
+  * Interoperability and insight
+
+* Name 2 types of feature selection and how are they different
+  * Filtering - Uses domain knowledge , Ignores learner bias, relationship and is fast
+  * Wrapping - Slow, takes the bias of the learner, uses feature relationships. Can be sped up by Randomized optimization and forward and backward sequential selection
+  
+* What is feature transforation 
+  * Finds a subsets of new features by linear combination of the features
+  
+* Difference between relevance and usefulness ?
+  * Relevance measures the effect of a feature on Bayes optimal classifier
+  * Usefullnes measures the effect of a feature on the error of a particular predictor
+  
+ *  What is a feature weakly relevant ?
+  * When it is not strongly relevant
+  * When there exists a subset of feature, S and adding to it improves BOC
+ 
+ * How is PCA different from ICA
+  * PCA looks for direction with maximum variance, ICA looks for maximum independence
+  * PCA has all principal component mutually orthogonal, ICA finds maximum mutual information
+  * PCA finds globally varying features, ICA finds locally
+
+
+
+ 
